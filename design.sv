@@ -19,8 +19,6 @@ module trafficlight (
   timeunit 1ns;
   timeprecision 100ps;
   parameter FAIL = 1'b0;
-  
-  
 
   	logic [1:0] ns_green_timer;
  	logic [1:0] ew_green_timer;
@@ -34,7 +32,6 @@ module trafficlight (
   
 	lights_t ns_next; //next state for ns lights
   	lights_t ew_next; //next state for ew lights
-  
   
   always_ff @(posedge clk or negedge reset_n) begin //Sequential Logic
 
