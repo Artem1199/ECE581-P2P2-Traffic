@@ -47,10 +47,10 @@ module trafficlight (
       	ew_light <= ew_next;  
     end // if reset
 	
-	if ((ns_next == YELLOW)||(~reset_n)||(ns_next == PRE_GREEN)||emgcy_sensor) //Resets NS light counter to 1
+	if ((ns_next == YELLOW)||(~reset_n)||(ns_next == PRE_GREEN)) //Resets NS light counter to 1
 	ns_reset <= 1;
 		else ns_reset <= 0;
-	if ((ew_next == YELLOW)||(~reset_n)||(ew_next == PRE_GREEN)||emgcy_sensor) //Resets EW light counter to 1
+	if ((ew_next == YELLOW)||(~reset_n)||(ew_next == PRE_GREEN)) //Resets EW light counter to 1
 	ew_reset <= 1;
 		else ew_reset <= 0;
 

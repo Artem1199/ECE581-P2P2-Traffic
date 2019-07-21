@@ -29,9 +29,9 @@ trafficlight TL(.ns_light(NS_LIGHT[2:0]), .ew_light(EW_LIGHT [2:0]), .ew_sensor(
 	#20 EMGCY_SENSOR = 1;
 	#10 EMGCY_SENSOR = 0;
 	#50 EW_SENSOR = 1;
-	#10 EW_SENSOR = 0;
+	#20 EW_SENSOR = 0;
 	#60 EW_SENSOR = 1;
-	#10 EW_SENSOR = 0;
+	#20 EW_SENSOR = 0;
 	#100 $finish;
 
 
