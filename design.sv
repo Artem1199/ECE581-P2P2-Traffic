@@ -65,7 +65,8 @@ module trafficlight (
 
 	YELLOW: ns_next = RED;
 
-	PRE_GREEN: ns_next = GREEN; //Pregreen while EW are yellow
+	PRE_GREEN: if(emgcy_sensor) ns_next = YELLOW; //Goes to yellow if it's transition to green
+			else ns_next = GREEN; //Pregreen while EW are yellow
 
 	RED: if(ns_green_timer == 3) ns_next = PRE_GREEN; 
 		else ns_next = RED;
@@ -80,8 +81,9 @@ module trafficlight (
 		unique case(ew_light)
 	GREEN: if((emgcy_sensor)||(ew_green_timer == 2'h3)) ew_next = YELLOW;
 	YELLOW: ew_next = RED;
-	PRE_GREEN: ew_next = GREEN;
-	RED: if (ew_sensor&&(ns_green_timer == 2'h3)) ew_next = PRE_GREEN;
+	PRE_GREEN:if(emgcy_sensor) ew_next = YELLOW;
+			else ew_next = GREEN; //Goes to yellow if it's transition to green
+	RED: if ((~emgcy_sensor)&&ew_sensor&&(ns_green_timer == 2'h3)) ew_next = PRE_GREEN;
 		else ew_next = RED;
 	default: $display("state error in EW FSM\n");
 	
